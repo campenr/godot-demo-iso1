@@ -16,5 +16,10 @@ func _physics_process(_delta):
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed():
-			target = get_global_mouse_position()
-			velocity = (target - position).normalized() * SPEED
+			move_to_point()
+
+
+func move_to_point():
+	target = get_global_mouse_position()
+	velocity = (target - position).normalized() * SPEED
+
