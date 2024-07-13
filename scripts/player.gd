@@ -6,9 +6,17 @@ const SPEED = 100
 var target: Vector2
 var projectile_scene
 
+@onready var sprite_2d = $Sprite2D
 
 func _ready():
 	projectile_scene = load("res://scenes/projectile.tscn")
+
+
+func _process(_delta):
+	if velocity.x > 0:
+		sprite_2d.flip_h = true
+	elif velocity.x < 0:
+		sprite_2d.flip_h = false
 
 
 func _physics_process(_delta):

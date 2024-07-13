@@ -4,7 +4,7 @@ extends Area2D
 
 var velocity: Vector2
 
-var SPEED = 100
+var SPEED = 300
 
 
 func _ready():
@@ -16,6 +16,6 @@ func _process(delta):
 	position = position + velocity * delta * SPEED
 
 
-func _on_area_entered(area):
-	area.queue_free()
+func _on_body_entered(body):
+	body.queue_free()
 	queue_free()
