@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgkujryueh1r8"]
+[gd_scene load_steps=7 format=3 uid="uid://dgkujryueh1r8"]
 
 [ext_resource type="Texture2D" uid="uid://bef4h3k0a1b6p" path="res://assets/worldtiles.png" id="1_61fir"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_vqdua"]
+[ext_resource type="PackedScene" uid="uid://d3m0etyy2iv4f" path="res://scenes/enemy_1.tscn" id="3_ni14b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbn41"]
 texture = ExtResource("1_61fir")
@@ -254,3 +255,14 @@ shape = SubResource("RectangleShape2D_yaohy")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy_1" parent="Enemies" instance=ExtResource("3_ni14b")]
+position = Vector2(258, 127)
+
+[node name="Enemy_2" parent="Enemies" instance=ExtResource("3_ni14b")]
+position = Vector2(-104, 80)
+
+[node name="Enemy_3" parent="Enemies" instance=ExtResource("3_ni14b")]
+position = Vector2(-105, -156)
