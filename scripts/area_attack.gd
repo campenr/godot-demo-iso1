@@ -7,6 +7,7 @@ var SCALE = 2.0
 
 @onready var attack_timer = $AttackTimer
 
+
 func _ready():
 	attack_timer.start()
 

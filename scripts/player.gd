@@ -8,6 +8,8 @@ var projectile_attack_scene
 var area_attack_scene
 
 @onready var sprite_2d = $Sprite2D
+@onready var countdown_timer = $CountdownTimer
+
 
 func _ready():
 	projectile_attack_scene = load("res://scenes/projectile_attack.tscn")
@@ -36,9 +38,18 @@ func _input(event):
 		if event.button_index == 1:
 			move_to_point()
 		elif event.button_index == 2:
+			if countdown_timer.time_left > 0.0:
+				return
+			else:
+				countdown_timer.start()
 			attack_projectile()
 		
 	if event is InputEventKey:
+		if countdown_timer.time_left > 0.0:
+			return
+		else:
+			countdown_timer.start()
+		
 		if event.keycode == 49:
 			attack_area()
 

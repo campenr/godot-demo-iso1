@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsvcf2pxcg7rg"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ge3dh"]
+[ext_resource type="Texture2D" uid="uid://bef4h3k0a1b6p" path="res://assets/worldtiles.png" id="2_80bv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaohy"]
+size = Vector2(20, 25)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ge3dh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+texture = ExtResource("2_80bv3")
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 192, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -9)
+shape = SubResource("RectangleShape2D_yaohy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="CountdownTimer" type="Timer" parent="."]
+one_shot = true

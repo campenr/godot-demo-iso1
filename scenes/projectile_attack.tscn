@@ -46,10 +46,13 @@ position = Vector2(-16.0714, 1.78571)
 scale = Vector2(1.38444, 1.38444)
 sprite_frames = SubResource("SpriteFrames_r5beo")
 autoplay = "default"
-frame_progress = 0.508466
+frame_progress = 0.352896
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wjive")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
