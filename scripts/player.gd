@@ -4,12 +4,14 @@ extends CharacterBody2D
 const SPEED = 100
 
 var target: Vector2
-var projectile_scene
+var projectile_attack_scene
+var area_attack_scene
 
 @onready var sprite_2d = $Sprite2D
 
 func _ready():
-	projectile_scene = load("res://scenes/projectile.tscn")
+	projectile_attack_scene = load("res://scenes/projectile_attack.tscn")
+	area_attack_scene = load("res://scenes/area_attack.tscn")
 
 
 func _process(_delta):
@@ -27,11 +29,18 @@ func _physics_process(_delta):
 
 
 func _input(event):
+	if not event.is_pressed():
+			return
+
 	if event is InputEventMouseButton:
-		if event.is_pressed() and event.button_index == 1:
+		if event.button_index == 1:
 			move_to_point()
-		if event.is_pressed() and event.button_index == 2:
+		elif event.button_index == 2:
 			attack_projectile()
+		
+	if event is InputEventKey:
+		if event.keycode == 49:
+			attack_area()
 
 
 func move_to_point():
@@ -40,6 +49,12 @@ func move_to_point():
 
 
 func attack_projectile():
-	var projectile = projectile_scene.instantiate()
-	projectile.set_position(position)
-	owner.add_child(projectile)
+	var projectile_attack = projectile_attack_scene.instantiate()
+	projectile_attack.set_position(position)
+	owner.add_child(projectile_attack)
+
+
+func attack_area():
+	var area_attack = area_attack_scene.instantiate()
+	area_attack.set_position(position)
+	owner.add_child(area_attack)

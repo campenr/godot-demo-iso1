@@ -1,4 +1,4 @@
-class_name Projectile
+class_name ProjectileAttack
 
 extends Area2D
 
@@ -9,7 +9,7 @@ var SPEED = 300
 
 func _ready():
 	velocity = get_local_mouse_position().normalized()
-	
+	set_rotation(atan2(velocity.y, velocity.x))
 
 
 func _process(delta):
